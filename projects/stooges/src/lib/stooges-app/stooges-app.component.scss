@@ -1,0 +1,33 @@
+:host {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  .wrap {
+    margin: auto;
+    max-width: 512px;
+    width: 100%;
+    position: relative;
+    padding-bottom: 90px;
+  }
+  .content {
+    background-color: #fff;
+    color: #000;
+    padding: 16px;
+  }
+}

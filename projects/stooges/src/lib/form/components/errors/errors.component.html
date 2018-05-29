@@ -1,0 +1,15 @@
+<!--sample-->
+<!--
+    <s-errors controlName="email" ></s-errors>
+-->
+<div *ngIf="canShow" [@dynamicSlideUpDown] class="overflow-hidden">
+  <div *ngFor="let error of getKeys(formControl.errors)" [@dynamicSlideUpDown] class="overflow-hidden">
+
+    <ng-container [ngSwitch]="error">
+      <div *ngSwitchCase="'matDatepickerParse'" class="color">invalid date format</div>
+      <div *ngSwitchDefault class="color">{{ formControl.errors![error] }}</div>
+    </ng-container>
+
+  </div>
+</div>
+

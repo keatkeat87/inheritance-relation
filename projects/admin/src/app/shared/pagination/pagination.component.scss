@@ -1,0 +1,56 @@
+@import 'theme';
+
+:host{
+  display: flex;
+  align-items: center;
+  color: rgba(0,0,0,.54);
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.page-item {
+  &:first-child .page-link {
+    margin-left: 0;
+  }
+  &.active .page-link {
+    color: #fff;
+    background-color: mat-color(map-get(getTheme(), primary));
+    border-color: mat-color(map-get(getTheme(), primary));
+  }
+  a{
+    outline: none;
+  }
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: mat-color(map-get(getTheme(), primary));
+  background-color: #fff;
+  border: 1px solid #ddd;
+  &:focus,
+  &:hover {
+    color: mat-color(map-get(getTheme(), primary));
+    text-decoration: none;
+    background-color: #eceeef;
+    border-color: #ddd;
+  }
+}
+span{
+  font-size: 12px;
+  margin-right:4px;
+  width:74px;
+}
+
+.pointerEventsNone{
+  pointer-events: none;
+  cursor: default;
+}
+ 

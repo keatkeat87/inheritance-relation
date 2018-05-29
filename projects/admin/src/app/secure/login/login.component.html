@@ -1,0 +1,42 @@
+<form cdkTrapFocus [formGroup]="form"   
+  (ngSubmit)="submit()"
+  class="py4">
+  
+  <div class="mb3 px1">
+    <p [@slideUpDownOverflow]="notFound"
+      class="error">Email not found.</p>
+    <p [@slideUpDownOverflow]="wrongPassword"
+      class="error">Wrong Password.</p>
+    <p [@slideUpDownOverflow]="locked"
+      class="error">Account locked!</p>
+    <p [@slideUpDownOverflow]="blocked"
+      class="error">Account blocked!</p>
+  </div>
+
+  <s-mat-input autofocus controlName="username"
+    displayName="Email Address"
+    type="email" >
+    <mat-icon class="inputMatSuffix">account_box</mat-icon>
+  </s-mat-input>
+
+  <s-mat-input controlName="password"
+    displayName="Password"
+    type="password">
+    <mat-icon class="inputMatSuffix">lock_outline</mat-icon>
+  </s-mat-input>
+
+  <a routerLink="../forgot-password"
+    queryParamsHandling="merge" class="pl1">Forgot Password</a>
+
+  <div class="mt3 pr1 flex justify-end items-center">
+    <mat-spinner [sShow]="loading"
+      [strokeWidth]="2"
+      [diameter]="24"
+      class="small mr2"></mat-spinner>
+    <button mat-raised-button
+      [disabled]="loading"
+      type="submit"
+      color="primary">Log In</button>
+  </div> 
+  
+</form>

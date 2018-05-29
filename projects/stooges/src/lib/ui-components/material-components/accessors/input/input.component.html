@@ -1,0 +1,39 @@
+<mat-form-field>
+  <div matPrefix>
+    <ng-content select=".inputMatPrefix"></ng-content>
+  </div>
+
+  <!-- 这里写了 2 个 if input, 因为 Angular 有 bug, [type]="'number'" 出来的 value 是 string....无言, 只能写 hard-code  -->
+  <input *ngIf="inputType != 'number'"
+    #focusable="matInput"
+    matInput
+    [formControl]="formControl"
+    placeholder="{{ displayName + (required ? '*' : '') }}"
+    [type]="inputType"
+    [attr.autocomplete]="autocomplete"
+    [readonly]="isReadonly">
+
+  <input *ngIf="inputType == 'number'"
+    #focusable="matInput"
+    matInput
+    [formControl]="formControl"
+    placeholder="{{ displayName + (required ? '*' : '') }}"
+    type="number"
+    [attr.autocomplete]="autocomplete"
+    [readonly]="isReadonly">
+
+  <div matSuffix>
+    <ng-content select=".inputMatSuffix"></ng-content>
+  </div>
+  <mat-hint align="start">
+    <s-errors #errors
+      [control]="formControl">
+    </s-errors>
+    <div [sHide]="errors.canShow && formControl.invalid">
+      <ng-content select=".inputMatHintStart"></ng-content>
+    </div>
+  </mat-hint>
+  <mat-hint align="end">
+    <ng-content select=".inputMatHintEnd"></ng-content>
+  </mat-hint>
+</mat-form-field>

@@ -1,0 +1,12 @@
+<button mat-raised-button
+    color="primary"
+    class="uploadButton">
+Upload Image
+<s-upload #upload 
+    [metadata]="imageMetadata" 
+    [formControl]="image">
+    </s-upload>
+</button>
+<div *ngFor="let fileData of upload.fileDatas">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

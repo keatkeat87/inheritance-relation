@@ -1,0 +1,79 @@
+<button mat-raised-button
+  class="uploadButton">
+  {{ displayName + (required ? '*' : '') }}
+  <s-upload #upload
+    [formControl]="formControl"
+    [metadata]="fileMetadata"
+    (validationFailed)="validationFailed()"
+    (cropfile)="cropfile($event)"></s-upload>
+</button>
+
+<div class="uploadRequirement">
+  <i class="material-icons">help_outline</i>
+  <div class="wrap">
+    <s-mat-upload-requirement [fileMetadata]="fileMetadata"
+      [imageData]="imageData"></s-mat-upload-requirement>
+  </div>
+</div>
+
+<s-errors [control]="formControl"
+  class="mt1 block"></s-errors>
+
+<div class="uploadFileContainer">
+  <div *ngFor="let fileData of upload.fileDatas"
+    (drop)="upload.moveFileData(fileData,upload.dragingFileData)"
+    (dragstart)="upload.dragingFileData = fileData"
+    sDragover
+    draggable="!formControl.disabled"
+    [class.isImage]="isImageUpload"
+    class="uploadFile">
+
+    <img *ngIf="isImageUpload && fileData.file.src != ''"
+      [sImage]="[fileData.file, 'upload']" />
+
+    <a *ngIf="!isImageUpload && fileData.file.src != ''"
+      [href]="fileData.file | sDownload | sSafeUrl"
+      download>{{ fileData.file.name }}</a>
+
+    <div [sShow]="fileData.loading"
+      class="box"></div>
+    <mat-spinner [sShow]="fileData.loading"
+      [strokeWidth]="2"
+      [diameter]="24"
+      class="small"></mat-spinner>
+    <mat-icon [sHide]="formControl.disabled"
+      (click)="upload.removeFileData(fileData)"
+      [sShow]="!fileData.loading">close</mat-icon>
+  </div>
+</div>
+
+<ng-template #popup>
+  <s-overlay-frame #overlayFrame
+    [showClose]="false"
+    (animationLeave)="disposeOverlayRef()">
+    <ng-container *ngFor="let cropingFileData of cropingFileDatas; let i = index">
+      <div [ngStyle]="{ width : cropingFileData.frameWidth + 'px', height : cropingFileData.frameHeight + 'px' }"
+        [class.visibility]="i == 0"
+        class="fadeIn">
+        <s-zoom #zoom defaultScaleMode="pinchable"
+          [transformFrameWidth]="cropingFileData.transformFrameWidth"
+          [transformFrameHeight]="cropingFileData.transformFrameHeight"
+          objectFit="cover">
+          <s-mat-canvas-for-crop [image]="cropingFileData.fileData.imageFile!.image"
+            [orientation]="cropingFileData.fileData.imageFile!.orientation"></s-mat-canvas-for-crop>
+        </s-zoom>
+        <div class="croppingOverlay"></div>
+        <div class="buttonArea">
+          <button (click)="crop(cropingFileData,zoom.data)"
+          mat-raised-button
+          color="primary"
+          class="crop">crop</button>
+
+          <button (click)="zoom.resetToDefaultScale()" [sShow]="zoom.currentScale < zoom.defaultScale" color="primary" class="reset" mat-icon-button>
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </s-overlay-frame>
+</ng-template>

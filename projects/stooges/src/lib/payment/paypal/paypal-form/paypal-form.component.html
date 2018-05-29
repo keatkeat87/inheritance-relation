@@ -1,0 +1,17 @@
+<form #paypalForm ngNoForm method="post" [action]="formActionUrl">
+  <input type="hidden" name="cmd" value="_cart" />
+  <input type="hidden" name="upload" value="1" />
+  <input type="hidden" name="business" [value]="businessEmail" />
+  <input type="hidden" name="currency_code" [value]="currencyCode" />
+  <input type="hidden" name="no_note" value="1" />
+  <input type="hidden" name="invoice" [value]="orderId" />
+  <input type="hidden" name="email" [value]="clientEmail" />
+  <input type="hidden" name="item_name_1" [value]="orderId" />
+  <input type="hidden" name="item_number_1" [value]="orderId" />
+  <input type="hidden" name="amount_1" [value]="amount.toFixed(2)" />
+  <input type="hidden" name="quantity_1" value="1" />
+  <input type="hidden" name="return" [value]="returnUrl" />
+  <input type="hidden" name="cancel_return" [value]="cancelUrl" />
+</form>
+
+ 

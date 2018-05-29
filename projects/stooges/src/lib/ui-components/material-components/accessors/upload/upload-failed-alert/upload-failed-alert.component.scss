@@ -1,0 +1,10 @@
+:host{
+    display: block;
+    &::ng-deep{
+        text-align: center;
+    }
+}
+
+button{
+    margin-top:16px;
+}

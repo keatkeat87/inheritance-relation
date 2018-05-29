@@ -1,0 +1,22 @@
+<form [formGroup]="form"
+  (ngSubmit)="submit()" class="center">
+  <h4>Hi</h4>
+  <div class="pt2">{{ data.title }}&ngsp;</div>
+  <mat-form-field *ngIf="data.keyword">
+    <input matInput
+      formControlName="keyword"
+      [type]="inputType">
+    <mat-hint align="start">
+      <s-errors controlName="keyword"></s-errors>
+    </mat-hint>
+  </mat-form-field>
+  <div class="pt4">
+    <button
+      mat-button
+      color="primary"
+      type="submit">Yes</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true">No</button>
+  </div>
+</form>

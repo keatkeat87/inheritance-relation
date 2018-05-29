@@ -1,0 +1,12 @@
+:host,
+.map{
+    height:100%;
+    display: block;
+}
+
+.loading{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transition:translate(-50%,-50%);
+}

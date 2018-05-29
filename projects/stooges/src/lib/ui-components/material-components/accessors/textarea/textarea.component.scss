@@ -1,0 +1,21 @@
+:host-context(form.form-col-2) {
+  width: 100%;
+}
+
+:host-context(form.form-col-3) {
+  width: 66.66%;
+}
+
+:host {
+  display: block;
+  padding:0 8px;
+  margin-bottom: 8px;
+}
+
+.mat-form-field{
+  width:100%;
+}
+
+textarea[mattextareaautosize] {
+  overflow-y: hidden;
+}

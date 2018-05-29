@@ -1,0 +1,17 @@
+<div [sShow]="totalRow && lastPage > 1" >
+  <span>{{ ((page - 1) * rowPerPage) + 1 }} - {{ ((page * rowPerPage) > totalRow) ? totalRow : (page * rowPerPage) }} of {{ totalRow }}</span>
+  <a [routerLink]="[]"
+    [queryParams]="{ page : page - 1 }"
+    queryParamsHandling="merge"
+    [class.pointerEventsNone]="page == 1"
+    mat-icon-button>
+    <mat-icon>chevron_left</mat-icon>
+  </a>
+  <a [routerLink]="[]"
+    [queryParams]="{ page : page + 1 }"
+    queryParamsHandling="merge"
+    [class.pointerEventsNone]="page == lastPage"
+    mat-icon-button>
+    <mat-icon>chevron_right</mat-icon>
+  </a>
+</div>

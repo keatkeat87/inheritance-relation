@@ -1,0 +1,54 @@
+<div [ngStyle]="{ 
+  width : overlaySizeConfig.width, 
+  height : overlaySizeConfig.height, 
+  maxWidth : overlaySizeConfig.maxWidth, 
+  maxHeight : overlaySizeConfig.maxHeight 
+}"
+  class="overlayContainer">
+  <ng-container #overlayContainer></ng-container>
+</div>
+ 
+<ng-template #popup>
+  <s-overlay-frame #overlayFrame
+    [showClose]="true"
+    (animationLeave)="disposeOverlayRef()">
+    <s-lightbox-deep-style>
+      <div class="slider"
+        data-hammer-swipe="all"
+        (swipedown)="tryCloseOverlay()"
+        (swipeup)="tryCloseOverlay()">
+        <s-slider 
+          #slider         
+          [defaultPage]="defaultPage">
+          <div #card *ngFor="let data of datas; let i = index" >
+            <div class="image">
+              <s-zoom
+                [transformFrameWidth]="getImageWidth(data)"
+                [transformFrameHeight]="getImageHeight(data)"
+                objectFit="contain">              
+                <img [sImage]="[ (canShowImage(i,slider.page,datas.length)) ? data[imageKey] : null, imageScene]"                 
+                  [alt]="data[titleKey]"
+                  (load)="imageLoadedIndexCollection[i] = 'mark'"
+                  draggable="false"
+                  class="contain">
+              </s-zoom>
+            </div>
+            <div class="text">{{ data[titleKey] }}</div>
+          </div>        
+        </s-slider>      
+        <div [sHide]="slider.page == 0"
+          (click)="slider.prev()"
+          class="leftNav">
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div [sHide]="slider.page == datas.length - 1"
+          (click)="slider.next()"
+          class="rightNav">
+          <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </s-lightbox-deep-style>
+  </s-overlay-frame>
+</ng-template>
+
+ 

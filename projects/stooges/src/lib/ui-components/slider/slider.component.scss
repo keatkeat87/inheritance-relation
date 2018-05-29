@@ -1,0 +1,19 @@
+:host{
+    overflow: hidden;
+    display: block;
+
+    &/deep/{
+        img{
+            width:100%;
+        }
+    }
+}
+
+.panArea{
+    white-space: nowrap;
+    height:100%;
+    font-size: 0;
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: grab;
+}

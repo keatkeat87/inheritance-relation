@@ -1,0 +1,19 @@
+<!-- fb-root 就放这里吧, 注意哦, fb script 加载后会把一些东西放入 fb-root, 千万不要洗掉 fb-root 哦 -->
+<div id="fb-root"></div>
+
+<youtube-loading></youtube-loading>
+
+<div [@popup]="showAlertError" class="modal">
+  <div class="wrap">
+    <div class="clearfix center">
+      <div class="content p3">
+        <p class="h4 my0">Alert!</p>
+        <p>{{ alertMessage }}</p>
+        <br>
+        <button (click)="closeAlert()" class="button">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-content></ng-content>

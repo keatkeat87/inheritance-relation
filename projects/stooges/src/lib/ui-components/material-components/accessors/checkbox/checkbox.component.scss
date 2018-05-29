@@ -1,0 +1,21 @@
+:host-context(form.form-col-2) {
+  width: 50%;
+  float: left;
+}
+
+:host-context(form.form-col-3) {
+  width: 33.33%;
+  float: left;
+}
+
+:host {
+  display: block;
+  padding:0 8px;
+  margin-bottom: 8px;//14px when on in form bottom
+}
+
+.formToggleType {
+  display: flex;
+  align-items: center;
+  height: 56px; //60px when on in form bottom
+}

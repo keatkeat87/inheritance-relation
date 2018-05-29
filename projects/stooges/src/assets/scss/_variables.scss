@@ -1,0 +1,127 @@
+$color-1:   #007bff !default; 
+$color-2:   #28a745 !default;
+$color-3:   #ffc107 !default;
+$color-4:   #dc3545 !default;
+
+$font-1:    #888888 !default; 
+$font-2:    #616161 !default; 
+$font-3:    #5a5a5a !default; 
+$font-4:    #464646 !default; 
+$font-5:    #101010 !default; 
+
+$white:     #fff     !default;
+$gray-1:    #f8f9fa  !default;
+$gray-2:    #e9ecef  !default;
+$gray-3:    #dee2e6  !default;
+$gray-4:    #ced4da  !default;
+$gray-5:    #adb5bd  !default;
+$gray-6:    #6c757d  !default;
+$gray-7:    #495057  !default;
+$gray-8:    #343a40  !default;
+$gray-9:    #212529  !default;
+$black:     #000     !default;
+ 
+$font-suffix : -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+$font-family-1:         'Open Sans', #{$font-suffix} !default;
+$font-family-2:         'Montserrat', #{$font-suffix} !default;
+$font-family-3:         'Aladin', #{$font-suffix} !default;
+$font-family-materail:  'Roboto, #{$font-suffix}' !default;//因为meterail 要string  
+$h1:    60px    !default; 
+$h2:    24px    !default; 
+$h3:    22px    !default;
+$h4:    20px    !default; 
+$h5:    14px    !default;  
+$h6:    13px    !default;
+  
+$body-background-color: #fafafa     !default;
+$body-color:            #101010     !default;
+$body-background-color: #fafafa     !default;
+$body-font-size:        14px            !default;
+$body-font-family:      $font-family-1  !default;
+$body-font-weight:      400             !default;
+$font-weight:           700             !default;
+$container-max-width:   1156px          !default;
+$container-padding:     16px            !default;
+$placeholderColor:      $font-1         !default;
+$selection-background:  $color-1        !default;
+$selection-color:       white       !default;
+$color-a:               #007bff     !default; 
+$table-border-color:    #eceeef        !default;
+
+$space-gap: 8px !default;
+$font-family-heading: $font-family-2 !default;
+
+$line-height-h1: 1em!default;
+$letter-spacing-h1: 1.5px!default;
+$font-weight-h1: 600!default;
+$margin-h1:20px 0 0!default;
+
+$line-height-h2: 1!default;
+$letter-spacing-h2: 1!default;
+$font-weight-h2: 600!default;
+$margin-h2:20px 0 0!default;
+
+$line-height-h3: 1!default;
+$letter-spacing-h3: 1!default;
+$font-weight-h3: 600!default;
+$margin-h3:20px 0 0!default;
+
+$line-height-h4: 1!default;
+$letter-spacing-h4: 1!default;
+$font-weight-h4: 600!default;
+$margin-h4:20px 0 0!default;
+
+$line-height-h5: 1!default;
+$letter-spacing-h5: 1!default;
+$font-weight-h5: 600!default;
+$margin-h5:20px 0 0!default;
+
+$line-height-h6: 1!default;
+$letter-spacing-h6: 1!default;
+$font-weight-h6: 600!default;
+$margin-h6:20px 0 0!default;
+
+$line-height-p: 23px!default;
+$letter-spacing-p: normal!default;
+$font-weight-p: 400!default;
+$margin-p:10px 0 0!default;
+
+$space-1: $space-gap * 1!default;
+$space-2: $space-gap * 2!default;
+$space-3: $space-gap * 3!default;
+$space-4: $space-gap * 4!default;
+$space-5: $space-gap * 5!default;
+$space-6: $space-gap * 6!default;
+$space-7: $space-gap * 7!default;
+$space-8: $space-gap * 8!default;
+
+//media 没有公开可以改，因为layout的改动设计simage，entity config等
+$min-xs : 1; //mobile
+$max-xs : 420; //mobile
+$min-sm : 421; //tablet
+$max-sm : 768; //tablet
+$min-md : 769; //tablet
+$max-md : 1024; //tablet
+$min-lg : 1025; //pc
+$max-lg : 1364; //pc //should be 1366, only chrome will get this (maybe is 1920 to 1366 lose calc)
+$min-xl : 1365; //pc
+$max-xl : 9999; //pc
+
+//follow bootstrap naming conventions
+$breakpoint-up-xs :'(min-width: '+ $min-xs +'px)'; // 1 ~ *
+$breakpoint-up-sm :'(min-width: '+ $min-sm +'px)'; // 421 ~ *
+$breakpoint-up-md :'(min-width: '+ $min-md +'px)'; // 769 ~ *
+$breakpoint-up-lg :'(min-width: '+ $min-lg +'px)'; // 1025 ~ *
+$breakpoint-up-xl :'(min-width: '+ $min-xl +'px)'; // 1365 ~ *
+
+$breakpoint-down-xs : '(max-width: '+ $max-xs +'px)';   // 1 ~ 420
+$breakpoint-down-sm : '(max-width: '+ $max-sm +'px)';   // 1 ~ 768
+$breakpoint-down-md : '(max-width: '+ $max-md +'px)';   // 1 ~ 1024
+$breakpoint-down-lg : '(max-width: '+ $max-lg +'px)';   // 1 ~ 1364
+$breakpoint-down-xl : '(max-width: '+ $max-xl +'px)';   // 1 ~ 9999
+
+$breakpoint-only-xs : '(min-width: '+ $min-xs +'px) and (max-width: '+ $max-xs +'px)'; //0 ~ 420
+$breakpoint-only-sm : '(min-width: '+ $min-sm +'px) and (max-width: '+ $max-sm +'px)'; //421 ~ 768
+$breakpoint-only-md : '(min-width: '+ $min-md +'px) and (max-width: '+ $max-md +'px)'; //769 ~ 1024
+$breakpoint-only-lg : '(min-width: '+ $min-lg +'px) and (max-width: '+ $max-lg +'px)'; //1025 ~ 1364
+$breakpoint-only-xl : '(min-width: '+ $min-xl +'px) and (max-width: '+ $max-xl +'px)'; //1365 ~ 999

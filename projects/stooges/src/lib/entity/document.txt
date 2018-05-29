@@ -1,0 +1,9 @@
+
+note :
+所有的验证和 default value 写在 class 上没问题
+除了 array, 因为 default value 会破坏 $expand 的场景
+验证也是一样, 所以 array 的 default value 和验证 length required 等, 请在 post 的时候自己写限制.
+
+single image c# 必须是 nullable, 因为 image 要转 json, 如果 null 不允许就得是 '' || empty object {}, 都不逻辑啦. null 最适合.
+
+前台没有 abstract entity class 因为很多时候我们需要 new Class 来做反射. 自己知道它是抽象就好了

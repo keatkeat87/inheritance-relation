@@ -1,0 +1,25 @@
+:host{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle {
+  height: 64px;
+  width: 64px;
+  line-height: 64px;
+  .mat-icon {
+    font-size: 26px;
+  }
+  @media(min-width:1025px){
+    visibility: hidden;
+    margin-left:-64px;
+  }
+}
+
+h2 {
+  display: inline-block;
+  font-size: 32px;
+  vertical-align: middle;
+}
+

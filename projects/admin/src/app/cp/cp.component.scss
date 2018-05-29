@@ -1,0 +1,249 @@
+@import 'variables';
+@import 'theme';
+//overwrite default, only deep can overwrite
+:host ::ng-deep {
+  .mat-drawer-content {
+    z-index: 2;
+  }
+  .mat-expansion-panel-body {
+    margin: 0 0 0 8px;
+  }
+  .mat-expansion-indicator:after {
+    margin-top: -6px;
+  }
+  .componentFrame {
+    background-color: #fafafa;
+    padding: 16px 16px 0; //firefox and ie ignore padding-bottom
+    display: block;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    .title {
+      font-size: 32px;
+    }
+    @media (min-width: 1025px) {
+      width: calc(100% - 260px);
+    }
+  }
+  .tableCard {
+    margin-bottom: 16px;
+    padding: 0 0 24px !important;
+    .topTable {
+      padding: $space-2 $space-3 0;
+      background: $gray-1;
+    }
+    .control {
+      width: 200px;
+      max-width: 100%;
+      float: left;
+    }
+    .createButton {
+      float: right;
+      margin-bottom: 8px;
+    }
+  }
+  .tableFooterArea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .itemPerPageArea {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, .54);
+    font-size: 12px;
+    span {
+      display: block;
+      margin-right: 4px;
+    }
+    .mat-form-field {
+      width: 42px;
+      .mat-select {
+        padding-top: 0;
+        .mat-select-trigger {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  a.backButton {
+    height: 64px;
+    width: 64px;
+    line-height: 64px;
+    .mat-icon {
+      font-size: 26px;
+    }
+  }
+  .mat-raised-button.mat-primary {
+    color: white;
+  }
+  .mat-card{
+    margin-bottom: 16px;
+    &.fullHeight{
+      height: calc(100vh - 148px);
+    }
+  }
+}
+
+.mat-sidenav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+}
+
+#sideNav {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  z-index:4;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  width: 260px;
+  background-image: url('../../assets/images/controlPanelSideBar.jpg');
+  background-size: cover;
+  &:before {
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .logo {
+    position: relative;
+    padding: 15px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 10%;
+      height: 1px;
+      width: 80%;
+      background-color: rgba(180, 180, 180, 0.3);
+    }
+    a {
+      padding: 5px 0px;
+      display: block;
+      white-space: nowrap;
+      font-size: 16px;
+      color: #3C4858;
+      text-align: center;
+      font-weight: 400;
+      line-height: 30px;
+    }
+  }
+  .scrollAreaOverhidden {
+    overflow: hidden;
+    width: 260px;
+  }
+  .scrollArea {
+    position: relative;
+    height: calc(100vh - 70px);
+    width: 100%;
+    overflow-y: scroll;
+    .user {
+      padding-bottom: 20px;
+      margin: 20px auto 0;
+      position: relative;
+      text-align: center;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 15px;
+        height: 1px;
+        width: calc(100% - 30px);
+        background-color: rgba(180, 180, 180, 0.3);
+      }
+      img.avatar {
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+        display: block;
+      }
+    }
+    .routerLink {
+      position: relative;
+      margin-top: 20px;
+      padding-bottom: 16px;
+      .mat-expansion-panel {
+        box-shadow: none;
+        background: none;
+      }
+      .mat-expansion-panel-spacing {
+        margin: 0;
+      }
+      .header {
+        .mat-icon {
+          vertical-align: middle;
+          color: #a9afbb;
+          margin-left: 6px;
+          margin-right: 15px;
+        }
+        span {
+          line-height: 30px;
+          font-size: 14px;
+        }
+      }
+      .link {
+        position: relative;
+        display: block;
+        margin-bottom: 8px;
+        &:hover a {
+          background: rgba(200, 200, 200, 0.2);
+          color: #3C4858;
+        }
+        &.active a {
+          //background: mat-color(map-get(getTheme(), primary), default, 0.2);
+          background-color: mat-color(map-get(getTheme(), primary));
+          box-shadow: 0 12px 20px -10px mat-color(map-get(getTheme(), primary), default, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px mat-color(map-get(getTheme(), primary), default, 0.2);
+          color: #FFFFFF;
+          .mat-icon {
+            color: #FFFFFF;
+          }
+        }
+        a {
+          margin: 10px 15px;
+          border-radius: 3px;
+          color: #3C4858;
+          position: relative;
+          display: block;
+          padding: 10px 15px;
+          text-decoration: none;
+          background-color: transparent;
+          transition: all 300ms linear;
+          .mat-icon {
+            vertical-align: middle;
+            color: #a9afbb;
+            margin-right: 15px;
+          }
+          span {
+            margin: 0;
+            line-height: 30px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  @media #{$breakpoint-up-sm} {
+    .scrollArea {
+      width: 277px;
+    }
+  }
+}
+
+#content {
+  width: 100%;
+}
+

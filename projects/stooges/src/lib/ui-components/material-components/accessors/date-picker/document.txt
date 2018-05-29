@@ -1,0 +1,12 @@
+note : 
+
+material 推荐我们用 moment 来做 datepicker 
+有一个点需要注意就是 datepicker formControl 是 moment object 而不是 js 的 Date
+这可能对整体会有影响
+测试过, 如果我们把 formControl set 成 Date 是可以被 input 的, 但是一旦用户操作 datepicker 后
+output 出来的就是 moment object 了. formControl 最终将变成 moment object.
+moment object 可以直接被 json 也可以被 pipe date.
+主要受到影响的地方是 
+-validators.service 的 date.
+-entityService.format
+

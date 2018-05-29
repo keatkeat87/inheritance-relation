@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+@import "variables";
+@import "theme";
+
+$color-1 : green;
+
+@include mat-core($custom-typography);
+@include angular-material-theme(getTheme());
+@include base();
+@include s-theme($color-1);

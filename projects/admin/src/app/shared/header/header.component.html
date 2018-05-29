@@ -1,0 +1,32 @@
+<section>
+    <button (click)="openSlideNav()"
+        mat-icon-button
+        color="primary"
+        class="toggle">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h2>{{ name }}</h2>
+</section>
+<section class="xs-hide">
+    <a mat-icon-button
+        [matMenuTriggerFor]="menu"
+        color="primary"
+        title="tutorial">
+        <mat-icon>videocam</mat-icon>
+    </a>
+    <mat-menu #menu="matMenu"
+        [overlapTrigger]="false"
+        xPosition="before">
+        <a mat-menu-item
+            href="https://youtu.be/l7Mx5uUr64s"
+            target="_blank">Tutorial</a>
+    </mat-menu>
+
+    <button (click)="refreshEmitter.emit()"
+        mat-icon-button
+        color="primary"
+        title="refresh"
+        class="refresh">
+        <mat-icon>refresh</mat-icon>
+    </button>
+</section>

@@ -1,0 +1,9 @@
+<div (panStart)="panStart($event)"
+    (panMove)="panMove($event)"
+    (panEnd)="panEnd($event)"
+    [ngStyle]="{ 'transform': 'translateX('+ translateX +'px)', transition: transition + 'ms' }"
+    class="panArea">
+    <ng-content></ng-content> 
+</div> 
+
+ 

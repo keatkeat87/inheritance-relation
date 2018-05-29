@@ -1,0 +1,77 @@
+@import "../../../../assets/scss/variables";
+
+:host ::ng-deep{
+    .mat-header-cell,
+    .mat-cell{
+        box-sizing: content-box;
+    }
+    .mat-sort-header-button{
+        text-align: left; //actually is align left, but the text to long make the button center again
+    }
+}
+
+.image{
+    width:84px;
+    margin:15px 0;
+}
+
+.dragColumn{
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    flex: 0 0 32px !important;
+    text-align: center;
+    cursor: move;
+    &.header{
+        cursor: default;
+    }
+    &:hover {
+        color: $color-1;
+    }
+}
+.mat-row{
+    &.onDrag{
+        background: lighten($color-1, 10%);
+    }
+}
+.TickColumn{
+    .mat-icon{
+        color:green;
+    }
+}
+
+.FileColumn,
+.editColumn{
+    flex: 0 0 32px !important;
+    text-align: center;
+}
+.removeColumn{
+    flex: 0 0 44px !important;
+    text-align: center;
+}
+
+.mat-column-Id.TextColumn{
+    flex: 0 0 32px !important;
+}
+
+.ImageColumn{
+    flex: 0 0 100px !important;
+}
+
+//等看到资料再改大小
+.TickColumn,
+.YoutubeColumn,
+.TextColumn,
+.TextareaColumn,
+.AmountColumn,
+.DateColumn,
+.DatetimeColumn,
+.TimeColumn,
+.EnumColumn{
+    flex: 1 0 100px !important;
+}
+
+.pre{
+    line-height: 1;
+    margin:4px 0;
+}

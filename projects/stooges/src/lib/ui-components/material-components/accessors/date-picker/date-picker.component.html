@@ -1,0 +1,17 @@
+<mat-form-field>
+  <input #focusable="matInput"
+    matInput
+    [min]="min"
+    [max]="max"
+    [matDatepickerFilter]="filter"
+    [formControl]="formControl"
+    [matDatepicker]="picker"
+    placeholder="{{ displayName + (required ? '*' : '') }}">
+  <mat-datepicker-toggle matSuffix
+    [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker
+    [touchUi]="mobile"></mat-datepicker>
+  <mat-hint align="start">
+    <s-errors [control]="formControl"></s-errors>
+  </mat-hint>
+</mat-form-field>

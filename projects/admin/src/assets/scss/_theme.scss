@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+@import './variables';
+
+@function getTheme(){
+    // mat-palette accepts $palette-name, main, lighter and darker variants
+    //$my-theme-primary: mat-palette($mat-indigo, 700);
+    //https://material.io/guidelines/style/color.html#color-color-palette
+    $my-theme-primary: mat-palette($mat-light-blue, 500);
+    $my-theme-accent: mat-palette($mat-light-green, 500);
+    $my-theme-warn: mat-palette($mat-light-blue, 700);
+
+    // create theme (use mat-dark-theme for themes with dark backgrounds)
+    $my-theme: mat-light-theme(
+        $my-theme-primary,
+        $my-theme-accent,
+        $my-theme-warn
+    );
+    @return $my-theme;
+}
+
+@function getPrimary(){
+    @return mat-color(map-get(getTheme(), primary));
+}
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: $font-family-materail
+);

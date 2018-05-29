@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+  padding: 0 8px;
+  margin-bottom: 8px; //14px when on in form bottom
+}
+
+.formToggleType {
+  display: flex;
+  align-items: center;
+  height: 56px; //60px when on in form bottom
+}

@@ -1,0 +1,12 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-flow: column;
+}
+
+.mat-progress-bar{
+    width: 117px;
+    margin-top: 12px;
+}

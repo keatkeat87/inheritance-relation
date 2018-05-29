@@ -1,0 +1,4 @@
+{
+    "entry": "projects/stooges/src/assets/scss/base.scss",
+    "dest": "dist/stooges/bundle.scss"
+}

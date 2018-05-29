@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+@import "variables";
+@import "theme";
+@import "materail";
+
+@include mat-core($custom-typography);
+@include angular-material-theme(getTheme());
+@include base();
+@include s-theme($color-1);
+
+
+//form 全局是因为dialog 回会change password form
+form{
+    margin-left: -8px;
+    margin-right: -8px;
+    &.form-col-2{
+        max-width: 600px;
+    }
+    &.form-col-3{
+      max-width: 900px;
+    }
+    
+    p.error{
+        color: red;
+        margin:0;
+    }
+}
+
+
+// .mat-select {
+//   width: 100%;
+// }
+
+// .mat-checkbox-label {
+//   white-space: normal;
+//   line-height: 1.2;
+// }
+// .mat-radio-button {
+//   margin-right: 8px;
+// }
+// .formFxLayout {
+//   margin-left: -8px;
+//   margin-right: -8px;
+// }
+
+
+
+
+ 
+

@@ -1,0 +1,5 @@
+<input [formControl]="hour" (input)="update()" #firstInputEl type="number" placeholder="HH">
+<span> : </span>
+<input [formControl]="minute" (input)="update()" type="number" placeholder="MM"> 
+<span>&ngsp;</span>
+<button type="button" (click)="toggle()">{{ amOrPm }}</button>

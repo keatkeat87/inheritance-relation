@@ -1,0 +1,21 @@
+<div [ngClass]="{ cover : objectFit == 'cover', contain : objectFit == 'contain' }" class="wrap">
+    <div #transformAreaEl data-hammer-pinch
+        data-hammer-pan="all"
+        (panStart)="panStart($event)"
+        (panMove)="panMove($event)" 
+        (panEnd)="panEnd($event)"
+        (pinchStart)="pinchStart($event)"
+        (pinchMove)="pinchMove($event)"
+        (pinchEnd)="pinchEnd()"
+        (wheel)="wheel($event)"
+        (dblclick)="dblclick($event)"
+        [ngStyle]="{
+            'width.px' : transformFrameWidth,
+            'height.px' : transformFrameHeight,
+            transform : 'translate('+ traslateX +'px, '+ traslateY +'px) scale('+ currentScale +')',
+            transition : 'transform ' + transition + 'ms'
+        }"
+        class="transformArea">
+        <ng-content></ng-content>
+    </div>
+</div>

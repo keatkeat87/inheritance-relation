@@ -1,0 +1,4 @@
+<div [@routerAnimation]="{value: (outlet.isActivated) ? outlet.activatedRoute.routeConfig!.path : 'stooges', params: routerAnimationParams}"
+(@routerAnimation.start)="animationEmitter.emit('start')" (@routerAnimation.done)="animationEmitter.emit('done')" >
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

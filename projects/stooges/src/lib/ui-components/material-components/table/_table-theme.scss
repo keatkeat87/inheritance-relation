@@ -1,0 +1,12 @@
+@mixin s-table-theme($color-1){
+    .dragColumn{
+        &:hover {
+            color: $color-1;
+        }
+    }
+    .mat-row{
+        &.onDrag{
+            background: lighten($color-1, 10%);
+        }
+    }
+}

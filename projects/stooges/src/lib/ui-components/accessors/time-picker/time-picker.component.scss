@@ -1,0 +1,24 @@
+input{
+    width: 35px;
+    height: 26px;
+    padding-top: 5px;
+    line-height: 12px;
+    padding-bottom: 2px;
+    border-top: none;
+    border-left: none;
+    border-right: 0;
+    outline: none;
+    border-bottom: 1px solid #949494;
+    text-align: center;
+}
+button{
+    border: 1px solid #d4d4d4;
+    padding: 2px;
+    width: 50px;
+    vertical-align: middle;
+    height: 24px;
+    outline:none;
+    &:focus{
+        border: 1px solid #949494;
+    }
+}

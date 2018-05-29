@@ -1,0 +1,105 @@
+<mat-sidenav-container>
+
+  <!-- sideNav -->
+  <mat-sidenav #sidenav [opened]="opened" [mode]="mode" id="sideNav">
+    <div class="logo">
+      <a routerLink="/admin">Depicco Events</a>
+    </div>
+    <div class="scrollAreaOverhidden">
+      <div class="scrollArea">
+        <div class="user">
+          <img class="avatar" src="/assets/images/avatar-1.jpg" />
+
+          <div class="mt2"></div>
+
+          <button mat-button [matMenuTriggerFor]="menu">{{ admin.name }}</button>
+
+          <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="after">
+            <button mat-menu-item (click)="openDialog()">Change Password</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+
+        </div>
+        <!-- routerLink -->
+        <div class="routerLink">
+          <mat-accordion>
+
+            <mat-expansion-panel routerLinkActive="active" #shippingExpand="routerLinkActive" [expanded]="shippingExpand.isActive">
+              <mat-expansion-panel-header>
+                <span class="header">
+                  <mat-icon>directions_run</mat-icon>
+                  <span>Event</span>
+                </span>
+              </mat-expansion-panel-header>
+
+              <div routerLinkActive="active" class="link">
+                <a #a routerLink="/events" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                  <mat-icon>directions_run</mat-icon>
+                  <span>Event</span>
+                </a>
+              </div>
+
+              <div routerLinkActive="active" class="link">
+                <a #a routerLink="/virtual-run-events" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                  <mat-icon>directions_run</mat-icon>
+                  <span>Virtual Run Event</span>
+                </a>
+              </div>
+
+              <div routerLinkActive="active" class="link">
+                <a #a routerLink="/non-virtual-run-events" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                  <mat-icon>directions_run</mat-icon>
+                  <span>Non Virtual Run Event</span>
+                </a>
+              </div>
+            </mat-expansion-panel>
+
+            <div routerLinkActive="active" class="link">
+              <a #a routerLink="/carousels" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                <mat-icon>panorama</mat-icon>
+                <span>Carousel</span>
+              </a>
+            </div>
+
+            <div routerLinkActive="active" class="link">
+              <a #a routerLink="/faqs" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                <mat-icon>help</mat-icon>
+                <span>FAQ</span>
+              </a>
+            </div>
+
+            <div routerLinkActive="active" class="link">
+              <a #a routerLink="/posts" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                <mat-icon>description</mat-icon>
+                <span>Post</span>
+              </a>
+            </div>
+
+            <div routerLinkActive="active" class="link">
+              <a #a routerLink="/products" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Product</span>
+              </a>
+            </div>
+
+            <div routerLinkActive="active" class="link">
+              <a #a routerLink="/testimonials" (click)="mobileAndTablet && sidenav.close();matchUrlRefresh(a.href)">
+                <mat-icon>thumb_up</mat-icon>
+                <span>Testimonial</span>
+              </a>
+            </div> 
+            
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+
+  </mat-sidenav>
+
+  <!-- content -->
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+

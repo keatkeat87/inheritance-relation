@@ -1,0 +1,7 @@
+@import "../../lib/ui-components/material-components/accessors/upload/upload-theme"; 
+@import "../../lib/ui-components/material-components/table/table-theme"; 
+
+@mixin s-theme($color-1){
+    @include s-upload-theme($color-1);
+    @include s-table-theme($color-1);
+}

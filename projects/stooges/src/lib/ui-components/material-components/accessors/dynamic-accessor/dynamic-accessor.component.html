@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="accessorType">
+  <s-mat-input *ngSwitchCase="'Email'" type="email" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-input>
+
+  <s-mat-input *ngSwitchCase="'LongText'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"
+    class="longTextAccessor"></s-mat-input>
+
+  <s-mat-input *ngSwitchCase="'Password'" type="password" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-input>
+
+  <s-mat-input *ngSwitchCase="'Number'" type="number" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-input>
+
+  <s-mat-input *ngSwitchCase="'Text'" [eControl]="eControl" [control]="formControl" [sUrlTitle]="urlTitle" [displayName]="eControl.displayName"></s-mat-input>
+
+  <s-mat-date-picker *ngSwitchCase="'DatePicker'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-date-picker>
+
+  <s-mat-ckeditor *ngSwitchCase="'Ckeditor'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-ckeditor>
+
+  <s-mat-upload *ngSwitchCase="'Upload'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-upload>
+
+  <s-mat-time-picker *ngSwitchCase="'TimePicker'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-time-picker>
+
+  <s-mat-textarea *ngSwitchCase="'Textarea'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-textarea>
+
+  <s-mat-checkbox *ngSwitchCase="'Checkbox'" [eControl]="eControl" [control]="formControl" [displayName]="eControl.displayName"></s-mat-checkbox>
+
+  <s-mat-simple-select *ngSwitchCase="'SimpleSelect'" [loading]="simpleSelectLoading" [eControl]="eControl" [control]="formControl"
+    [displayName]="eControl.displayName" [multiple]="simpleSelectMultiple" [items]="simpleSelectItems" [getValue]="simpleSelectGetValue"
+    [getDisplay]="simpleSelectGetDisplay" [compareWith]="simpleSelectCompareWith"></s-mat-simple-select>
+</ng-container>

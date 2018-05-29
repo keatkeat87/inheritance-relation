@@ -1,0 +1,83 @@
+<div class="componentFrame">
+    <cp-header name="Samples"
+        (refresh)="refreshAsync()"></cp-header>
+
+    <mat-card class="tableCard mt3"
+        [class.fullHeight]="!resources">
+
+        <mat-spinner *ngIf="!resources"></mat-spinner>
+
+        <div *ngIf="resources"
+            [@fadeIn]>
+            <div class="clearfix topTable">
+                <form class="clearfix">
+                    <s-mat-input [control]="search"
+                        displayName="Search" class="control"
+                        ></s-mat-input>
+
+                    <!--
+                        <s-mat-input [control]="search"
+                            displayName="Search" class="control"
+                            ></s-mat-input>
+                        <ng-container [formGroup]="form"
+                            [eGroup]="eGroup">        
+                            
+                            <select-branch controlName="branchId"
+                                displayName="Branch" 
+                                class="control"
+                                ></select-branch>
+                        </ng-container> 
+
+                        <s-mat-simple-select [control]="language"
+                            [items]="supportedLanguage"
+                            [hidePleaseSelect]="true"
+                            displayName="" class="control" >
+                        </s-mat-simple-select>
+                    -->
+
+                    <a routerLink="create"
+                        queryParamsHandling="preserve"
+                        mat-raised-button
+                        color="primary"
+                        class="createButton">Create</a>
+                </form>
+            </div>
+            <div class="overflow-auto">
+                <s-mat-table [dataSource]="dataSource"
+                    [displayedColumns]="displayedColumns"
+                    [keyAndTControls]="keyAndTControls"
+                    [sort]="sort"
+                    [sortDirection]="sortDirection"
+                    (sortChange)="sortBy($event)"
+                    (remove)="remove($event.resource.Id)"
+                    [showDrag]="true"                   
+                    [cellDraggable]="sort == 'sort' && !updatingSort"
+                    (cellDragstart)="recordDragStart($event.resource)"
+                    (cellDragend)="draggingData && !updatingSort && updateSort()"
+                    [rowSDragover]="draggingData && !updatingSort"
+                    (rowDragenter)="draggingData && !updatingSort && moveSort($event.resource,$event.index)"
+                    [draggingData]="draggingData"
+                    [generateRowNgClassFn]="generateRowNgClassFn"
+                    >
+                </s-mat-table>
+            </div>
+            <div class="tableFooterArea mt2">
+                <div class="itemPerPageArea">
+                    <span>Items per page</span>
+
+                    <s-mat-simple-select [control]="rowPerPage"
+                        [items]="[10,25,50,100]"
+                        [hidePleaseSelect]="true"
+                        displayName="">
+                    </s-mat-simple-select>
+                </div>
+
+                <cp-pagination [totalRow]="totalRow"
+                    [rowPerPage]="rowPerPage.value"
+                    [page]="page"
+                    class="inline-block"></cp-pagination>
+            </div>
+        </div>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>

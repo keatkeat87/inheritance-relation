@@ -1,0 +1,51 @@
+<div class="componentFrame">
+  <div class="flex justify-start items-center">
+    <a [routerLink]="backButtonRouterLink"
+      queryParamsHandling="preserve"
+      mat-icon-button
+      color="primary"
+      class="backButton">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <h2 class="title">{{ formTitle }}</h2>
+  </div>
+
+  <mat-card class="mt3"
+    [class.fullHeight]="!ready">
+    <mat-spinner *ngIf="!ready"
+      class="mx-auto"></mat-spinner>
+
+    <form cdkTrapFocus
+      *ngIf="ready"
+      [formGroup]="form"
+      [eGroup]="eGroup"
+      (ngSubmit)="submit()"
+      class="clearfix form-col-2">
+
+      <ng-container *ngFor="let key of displayKeys">
+        <s-mat-dynamic-accessor [eControl]="eGroup.get(key)"
+          [control]="form.get(key)"></s-mat-dynamic-accessor>
+      </ng-container>
+      
+      <div class="clearfix"></div>
+
+      <!-- submit -->
+      <div class="px1 w100 flex justify-start items-center">
+        <button mat-raised-button
+          [disabled]="loading"
+          type="submit"
+          color="primary">Submit</button>
+        <div class="ml2">
+          <mat-spinner [sShow]="loading"
+            [strokeWidth]="2"
+            [diameter]="24"
+            class="small"></mat-spinner>
+          <span [sShow]="successful">Successful</span>
+          <span [sShow]="unique"
+            class="formError">Duplicate of {{ uniqueDisplayNames }}</span>
+        </div>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

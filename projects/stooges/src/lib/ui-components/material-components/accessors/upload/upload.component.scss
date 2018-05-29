@@ -1,0 +1,146 @@
+@import "../../../../../assets/scss/variables";
+
+:host{
+  display: block;
+  width: 100%;
+  padding:0 8px;
+  margin-bottom: 16px;
+}
+
+s-zoom {
+  overflow: visible;
+}
+
+.uploadFileContainer {
+  margin-top: 10px;
+  .uploadFile {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    border: 1px solid $color-1;
+    &.isImage {
+      height: 80px;
+      min-width: 28px;
+      border: 2px solid $color-1;
+      vertical-align: top;
+      img {
+        height: 100%;
+        display: block;
+      }
+      .box {
+        width: 80px;
+      }
+      @media #{$breakpoint-only-xs} {
+        height: 40px;
+      }
+    }
+    &[draggable=true] {
+      img {
+        cursor: move;
+      }
+    }
+    s-errors {
+      font-size: 12px;
+    }
+    a[download] {
+      padding-left: 6px;
+      padding-right: 30px;
+      line-height: 24px;
+      vertical-align: middle;
+    }
+    .mat-progress-spinner {
+      position: absolute;
+      top: calc(50% - 12px);
+      left: calc(50% - 12px);
+    }
+    .mat-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      background: #fff;
+      color: $color-1;
+      z-index: 1;
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .cropImageArea {
+    position: relative;
+    z-index: 10;
+  }
+  .uploadFile {
+    //nothing is beautiful
+  }
+}
+
+.uploadRequirement {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 4px;
+  cursor: pointer;
+  &:hover .wrap {
+    display: block;
+  }
+  i {
+    font-size: 24px;
+  }
+}
+
+.wrap {
+  background-color: #fff;
+  position: absolute;
+  top: 24px;
+  left: -90px;
+  border: 1px solid #c7c7c7;
+  display: none;
+  width: 210px;
+  z-index: 2;
+  padding: 4px;
+  font-size: 12px;
+  cursor: default;
+}
+
+.fadeIn {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms linear;
+  &.visibility {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.croppingOverlay {
+  pointer-events: none;
+  position: absolute;
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 2000px 2000px rgba(0, 0, 0, .5);
+  border: 1px solid #fff;
+}
+
+.buttonArea {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.crop {
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.reset {}
+

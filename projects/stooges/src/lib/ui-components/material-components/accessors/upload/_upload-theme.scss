@@ -1,0 +1,13 @@
+@mixin s-upload-theme($color-1){
+  .uploadFileContainer {
+    .uploadFile {
+      border: 1px solid $color-1;
+      &.isImage {
+        border: 2px solid $color-1;
+      }
+      .mat-icon {
+        color: $color-1;
+      }
+    }
+  }
+}

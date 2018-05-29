@@ -1,0 +1,1 @@
+<input #inputFileEl [multiple]="metadata.multiple" [disabled]="disabled" (change)="upload($event.target.files); $event.target.value = ''" type="file">

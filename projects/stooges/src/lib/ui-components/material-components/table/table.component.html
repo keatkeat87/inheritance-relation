@@ -1,0 +1,145 @@
+<mat-table [dataSource]="dataSource"
+  [trackBy]="trackBy"
+  matSort
+  [matSortActive]="sort"
+  [matSortDirection]="sortDirection"
+  [matSortDisableClear]="true"
+  (matSortChange)="onSortChange($event.active)">
+
+  <ng-content></ng-content>
+
+  <ng-container matColumnDef="drag">
+    <mat-header-cell *matHeaderCellDef
+      class="dragColumn header"></mat-header-cell>
+    <mat-cell *matCellDef="let resource"
+      [draggable]="cellDraggable"
+      (dragstart)="cellDragstartEmitter.emit({ resource : resource })"
+      (dragend)="cellDragendEmitter.emit()"
+      class="dragColumn">
+      <mat-icon>drag_indicator</mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container [matColumnDef]="(keyAndTControl.namespace) ? keyAndTControl.namespace + '.' + keyAndTControl.key : keyAndTControl.key"
+
+    *ngFor="let keyAndTControl of keyAndTControls">
+    <mat-header-cell *matHeaderCellDef
+      mat-sort-header
+      [disabled]="!fnValue(keyAndTControl.tControl.sortable)"
+      [ngClass]="keyAndTControl.tControl.cellType + 'Column'">{{ keyAndTControl.tControl.displayName }}</mat-header-cell>
+    <mat-cell *matCellDef="let resource"
+      [ngClass]="keyAndTControl.tControl.cellType + 'Column'">
+      <ng-container *ngIf="getByPath(resource,keyAndTControl.key)">
+
+        <ng-container [ngSwitch]="keyAndTControl.tControl.cellType">
+
+          <ng-container *ngSwitchCase="'Tick'">
+            <mat-icon *ngIf="getByPath(resource,keyAndTControl.key)">check_circle</mat-icon>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Image'">
+            <div *ngIf="getByPath(resource,keyAndTControl.key)"
+              class="image-scale-1by1 image">
+              <a [href]="getBiggestImageSrc(getByPath(resource,keyAndTControl.key))"
+                target="_blank">
+                <img [sImage]="[getByPath(resource,keyAndTControl.key), 'upload']"
+                  class="contain" />
+              </a>
+            </div>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Youtube'">
+            <iframe *ngIf="getByPath(resource,keyAndTControl.key)"
+              [src]="getByPath(resource,keyAndTControl.key) | sYoutubeCode"
+              frameborder="0"
+              allowfullscreen></iframe>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'File'">
+            <a *ngIf="getByPath(resource,keyAndTControl.key)"
+              [href]="getByPath(resource,keyAndTControl.key) | sDownload"
+              download>
+              <mat-icon>insert_drive_file</mat-icon>
+            </a>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Text'">
+            {{ getByPath(resource,keyAndTControl.key) }}
+          </ng-container>
+
+          <p *ngSwitchCase="'Textarea'"
+            class="pre">{{ getByPath(resource,keyAndTControl.key) }}</p>
+
+          <ng-container *ngSwitchCase="'Amount'">
+            {{ getByPath(resource,keyAndTControl.key).toFixed(2) }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Date'">
+            {{ getByPath(resource,keyAndTControl.key) | date : 'dd-MMM-yyyy' }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Datetime'">
+            {{ getByPath(resource,keyAndTControl.key) | date : 'dd-MMM-yyyy hh:mm:ss a' }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Time'">
+            {{ getByPath(resource,keyAndTControl.key) | date : 'hh:mm:ss a' }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'Enum'">
+            {{ $any(keyAndTControl.tControl).valueToDisplay(getByPath(resource, keyAndTControl.key)) }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'OdataType'">
+            {{ $any(keyAndTControl.tControl).generateOdataTypeByResource(resource)  }}
+          </ng-container>
+
+        </ng-container>
+
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef
+      class="editColumn">Edit</mat-header-cell>
+    <mat-cell *matCellDef="let resource"
+      class="editColumn">
+      <a [routerLink]="generateEditRouterLink(resource)"
+        queryParamsHandling="preserve"
+        mat-icon-button>
+        <mat-icon color="accent">edit</mat-icon>
+      </a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="remove">
+    <mat-header-cell *matHeaderCellDef
+      class="removeColumn">Remove</mat-header-cell>
+    <mat-cell *matCellDef="let resource"
+      class="removeColumn">
+      <button (click)="removeEmitter.emit({ resource : resource })"
+        mat-icon-button
+        color="accent">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="empty">
+    <mat-header-cell *matHeaderCellDef>empty</mat-header-cell>
+    <mat-cell *matCellDef="let row"
+      class="flex-center">
+      No Data
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let resource; let index = index; columns: displayedColumns; when : notEmpty"
+    [ngClass]="internalGenerateRowNgClassFn(resource,index)"
+    [sDragOver]="showDrag && rowSDragover"
+    (dragenter)="showDrag && rowDragenterEmitter.emit({ resource : resource, index : index })"></mat-row>
+
+  <mat-row *matRowDef="let resource; columns: ['empty']; when : empty"></mat-row>
+</mat-table>
